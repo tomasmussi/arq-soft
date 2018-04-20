@@ -1,0 +1,6 @@
+Notas
+
+
+Para profiling, se puede usar tanto ab (Apache benchmark) o npm artillery
+
+Jmeter: profiling en serio (no es obligatorio para el tp)
