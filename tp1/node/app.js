@@ -30,20 +30,18 @@ function test(req, res) {
 	res.send("Hola mundo.!");
 }
 
-function sleepCallback(req,res) {
-	// Finished waiting " + str(TENTH_OF_SECOND) + " seconds"
-	console.log("begin");
-	res.send("Finalizo la espera de 1000 milisegundos");
-	console.log("fin");
-}
-
 /*
  * Defines a slow and light endpoint, this means that the endpoint is slow
  *but it does not demand a lot of resources, such as CPU time, Memory, Disk operations, etc
 */
 function light(req, res) {
 	// For now a simple sleap will do
-	setTimeout(sleepCallback(req, res), 100000);
+	var begin = Date.now();
+	setTimeout((begin) => {
+		var end = Date.now();
+		console.log("Finalizo luego de " + (end-begin) + " milisegundos");
+		res.send("Finalizo luego de " + (end-begin) + " milisegundos");
+	}, 1000, begin);
 }
 
 
