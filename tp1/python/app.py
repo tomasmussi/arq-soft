@@ -2,7 +2,7 @@ from flask import Flask
 import time
 
 TENTH_OF_SECOND = 0.1 # Time in seconds
-MAX_ITERATIONS = 524288
+MAX_ITERATIONS = 5242880
 
 app = Flask(__name__)
 
@@ -23,7 +23,7 @@ but it does not demand a lot of resources, such as CPU time, Memory, Disk operat
 def light():
 	# For now a simple sleap will do
 	time.sleep(TENTH_OF_SECOND)
-	return "Finished waiting " + str(TENTH_OF_SECOND) + " seconds"
+	return "Finalizo en " + str(TENTH_OF_SECOND) + " segundos"
 
 
 """
@@ -35,13 +35,13 @@ a resource:
 """
 @app.route('/heavy')
 def heavy():
-	# For now a simple for loop will do
+	# For now a simple for spin loop will do
 	start = time.time()
 	for i in xrange(MAX_ITERATIONS):
 		l = 1 # Do nothing
 	end = time.time()
 	elapsed = end - start
-	return "Finished waiting " + str(elapsed) + " seconds"
+	return "Finalizo en " + str(elapsed) + " segundos"
 
 
 

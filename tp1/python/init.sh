@@ -4,5 +4,5 @@ else
 	w=$1
 fi
 
-echo "Starting with $w workers"
+echo "Usando $w workers"
 gunicorn app:app -w $w
