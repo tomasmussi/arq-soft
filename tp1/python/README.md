@@ -21,8 +21,11 @@ gunicorn app:app -w n
 Esto está resumido en el script `init.sh`:
 
 ```bash
-./init.sh n
+./init.sh port
+./init.sh port n
 ```
+Es necesario siempre especificar puerto de binding en el cual estara escuchando el server
+Si ademas se pasa n, esos seran la cantidad de workers que despacha el server
 
 ### Explicación
 
