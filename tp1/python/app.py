@@ -1,7 +1,7 @@
 from flask import Flask
 import time
 
-TENTH_OF_SECOND = 0.1 # Time in seconds
+SLEEP_TIME = 0.1 # in seconds
 MAX_ITERATIONS = 5242880
 
 app = Flask(__name__)
@@ -10,26 +10,23 @@ app = Flask(__name__)
 def empty():
 	return "Empty"
 
-
 @app.route('/test/<id>')
 def test(id):
-	return "Hola mundo...!" + str(id)
+	return "Hola mundo...! " + str(id)
 
 """
-Defines a slow and light endpoint, this means that the endpoint is slow
+Defines a slow and light endpoint. This means that the endpoint is slow
 but it does not demand a lot of resources, such as CPU time, Memory, Disk operations, etc
 """
 @app.route('/light')
 def light():
-	# For now a simple sleap will do
-	time.sleep(TENTH_OF_SECOND)
-	return "Finalizo en " + str(TENTH_OF_SECOND) + " segundos"
-
+	# For now a simple sleep will do
+	time.sleep(SLEEP_TIME)
+	return "Finalizo en " + str(SLEEP_TIME) + " segundos"
 
 """
-Defines a slow and heavy endpoint, this means that the endpoint is slow and demands
-a resource:
- - CPU TIME: a for loop from 1 to a high number
+Defines a slow and heavy endpoint. This means that the endpoint is slow and demands a resource:
+ - CPU time: a for loop from 1 to a high number
  - Memory: an expanding list could be, appending elements and requiring more memory
  - Disk: reading/writing to disk something, seek operations
 """
@@ -42,17 +39,3 @@ def heavy():
 	end = time.time()
 	elapsed = end - start
 	return "Finalizo en " + str(elapsed) + " segundos"
-
-
-
-"""
-gunicorn app:app
-
-ejecuta minimo dos procesos: un master y un worker al menos
-
-Los requests llegan al master y se los pasa al worker que ejecuta el codigo
-
-El master puede hacer varios workers
-
-Para mas workers, hay que cambiar el comando de gunicorn
-"""
