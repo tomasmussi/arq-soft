@@ -11,13 +11,18 @@ const MAX_ITERATIONS = 5242880;
 const SLEEP_TIME = 1000; // in miliseconds
 
 // Endpoints
+app.get('/', (req, res) => {
+	res.send("Home node");
+})
+
 app.get('/test', (req, res) => {
-	res.send("Hola mundo.!");
+	console.log("Request arrived")
+	res.send("Hola mundo!");
 });
 
-app.get('/test/:id', (req, res) => {
-	res.send("Hola mundo!" + req.params.id);
-});
+// app.get('/test/:id', (req, res) => {
+// 	res.send("Hola mundo! " + req.params.id);
+// });
 
 /*
  * Defines a slow and light endpoint. This means that the endpoint is slow
@@ -29,8 +34,10 @@ app.get('/light', (req, res) => {
 	setTimeout((begin) => {
 		const end = Date.now();
 		const elapsed = end - begin;
-		console.log("Finalizo luego de " + elapsed + " milisegundos");
-		res.send("Finalizo luego de " + elapsed + " milisegundos");
+
+		const response = "Finalizo luego de " + elapsed + " milisegundos";
+		console.log(response);
+		res.send(response);
 	}, SLEEP_TIME, begin);
 });
 
@@ -45,7 +52,10 @@ app.get('/heavy', (req, res) => {
 	const t0 = Date.now();
 	for (let i = 0; i < MAX_ITERATIONS; i++) {};
 	const t1 = Date.now();
-	res.send("Termino loop luego de " + (t1 - t0) + " milisegundos");
+
+	response = "Termino loop luego de " + (t1 - t0) + " milisegundos";
+	console.log(response);
+	res.send(response);
 });
 
 app.listen(PORT, () => console.log('Escuchando en el puerto ' + PORT));
