@@ -11,8 +11,10 @@ def empty():
 	return "Empty"
 
 
-@app.route('/test/<id>')
-def test(id):
+#@app.route('/test/<id>')
+@app.route('/test')
+def test():
+	print "Request arrived"
 	return "Hola mundo...!" + str(id)
 
 """
