@@ -1,0 +1,25 @@
+nginx:
+    container_name: arq_soft_nginx
+    build: ./docker/nginx/
+    ports:
+        - 80:80
+    links:
+        - node_app
+        - python_app
+
+node_app:
+    container_name: arq_soft_node_app
+    build: ./docker/node
+    volumes:
+        - ./node:/some/dir/in/container
+    command: "true"
+    expose: 
+        - 3000
+
+python_app:
+    container_name: arq_soft_python_app
+    build: ./docker/python
+    volumes:
+        - ./python:/app/py
+    expose: 
+        - 8000
