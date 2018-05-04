@@ -26,7 +26,7 @@ services:
             context: .
             dockerfile: node-express.dockerfile
         volumes:
-            - ./js:/app
+            - ./js/src:/app/src
         links:
             - grafana
         command: npm run start
