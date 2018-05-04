@@ -12,7 +12,7 @@ def home():
 
 @app.route('/test')
 def test():
-	print "Request arrived"
+	print("Request arrived")
 	return "Hola mundo!"
 
 # @app.route('/test/<id>')
@@ -29,7 +29,7 @@ def light():
 	time.sleep(SLEEP_TIME)
 
 	response = "Finalizo en " + str(SLEEP_TIME) + " segundos"
-	print response
+	print(response)
 	return response
 
 """
@@ -48,5 +48,5 @@ def heavy():
 	elapsed = end - start
 
 	response = "Finalizo en " + str(elapsed) + " segundos"
-	print response
+	print(response)
 	return response
