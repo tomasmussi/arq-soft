@@ -1,8 +1,16 @@
 ## Docker compose
 Dado que vamos a usar imagenes docker para el tp entero, incluido el profiling, hay que usar `docker-compose up` para ejecutar todo
 
-En el tp1, tenemos 1 instancia de node, 1 instancia de gunicorn y, segun el siguiente comando, 3 instancias de gunicorn cuya será repartida por Nginx. Para poder ejecutar los containers `docker-compose up --scale n-gunicorn=3` y si no se creó un usergroup docker para que no sea necesario ejecutarlo como root, hay que ejecutar el comando con sudo: `sudo docker-compose up --scale n-gunicorn=3`
-Tener cuidado que si se quiere escalar algún otro container, hay que modificar el archivo `nginx_reverse_proxy.conf` que esta en este directorio (si hay dudas, revisar a donde apunta la configuración de nginx en `docker-compose.yml`) para hacer de load balancer
+En el tp1, tenemos 1 instancia de node, 1 instancia de gunicorn y, segun el siguiente comando, 3 instancias de gunicorn cuya carga será repartida por Nginx. Para poder ejecutar los containers
+
+`docker-compose up --scale n-gunicorn=3`
+
+y si no se creó un usergroup docker para que no sea necesario ejecutarlo como root, hay que ejecutar el comando con sudo: `sudo docker-compose up --scale n-gunicorn=3`
+Tener cuidado que si se quiere escalar algún otro container, hay que modificar el archivo
+
+`nginx_reverse_proxy.conf`
+
+que esta en este directorio (si hay dudas, revisar a donde apunta la configuración de nginx en `docker-compose.yml`) para hacer de load balancer
 
 ## Nginx
 
