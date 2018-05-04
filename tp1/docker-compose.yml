@@ -11,6 +11,16 @@ services:
             - grafana
         command: gunicorn -w 1 app:app -b :8000
 
+    n-gunicorn:
+        build:
+            context: .
+            dockerfile: gunicorn.dockerfile
+        volumes:
+            - ./py:/app/py
+        links:
+            - grafana
+        command: gunicorn -w 1 app:app -b :8000 --access-logfile access.log --error-logfile error.log
+
     node:
         build:
             context: .
