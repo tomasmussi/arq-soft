@@ -19,11 +19,11 @@ Tomar el escenario ```root.yaml``` de base para crear escenarios de prueba.
 Para ejecutar un escenario, lo que hay que hacer una vez que ya se tiene escrito el escenario es:
 
 ```
-./run-scenario.sh *escenario.yaml* *nombre-escenario*
+./run-scenario.sh escenario.yaml nombre-escenario
 ```
 
 Por ejemplo, el caso base que tenemos:
 
 ```
-./run-scenario.sh *root* *prueba*
+./run-scenario.sh root prueba
 ```
