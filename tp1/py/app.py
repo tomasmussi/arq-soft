@@ -13,6 +13,9 @@ def home():
 @app.route('/test')
 def test():
 	print("Request arrived")
+	l = []
+	for i in range(100000):
+		l.append(i)
 	return "Hola mundo!"
 
 # @app.route('/test/<id>')

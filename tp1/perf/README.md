@@ -16,14 +16,25 @@ Ahora bien, artillery puede usar archivos de escenarios en el cual simularemos c
 
 Tomar el escenario ```root.yaml``` de base para crear escenarios de prueba.
 
-Para ejecutar un escenario, lo que hay que hacer una vez que ya se tiene escrito el escenario es:
+Para ejecutar un environment, lo que hay que hacer una vez que ya se tiene escrito el escenario es:
 
 ```
-./run-scenario.sh escenario.yaml nombre-escenario
+./run-scenario.sh escenario.yaml nombre-environment
 ```
 
 Por ejemplo, el caso base que tenemos:
 
+Para ejecutar en Node
 ```
-./run-scenario.sh root prueba
+./run-scenario.sh root node
+```
+
+Para ejecutar en 1 instancia de gunicorn con 1 worker
+```
+./run-scenario.sh root gunicorn
+```
+
+Para ejecutar en 3 instancias de gunicorn con 1 worker para cada instancia
+```
+./run-scenario.sh root node
 ```

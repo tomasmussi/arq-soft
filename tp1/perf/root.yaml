@@ -1,26 +1,45 @@
 config:
   environments:
-    node:
-      target: 'http://localhost:5555/node'
-      plugins:
-        statsd:
-          host: localhost
-          port: 8125
-          prefix: "artillery-node"
     gunicorn:
-      target: 'http://localhost:8000'
+      target: 'http://localhost:5555/gunicorn/'
       plugins:
         statsd:
           host: localhost
           port: 8125
           prefix: "artillery-gunicorn"
+    node:
+      target: 'http://localhost:5555/node/'
+      plugins:
+        statsd:
+          host: localhost
+          port: 8125
+          prefix: "artillery-node"
+    n-gunicorn:
+      target: 'http://localhost:5555/gunicorn_replicated/'
+      plugins:
+        statsd:
+          host: localhost
+          port: 8125
+          prefix: "artillery-n-gunicorn"
 
   pool: 50 # All HTTP requests from all virtual users will be sent over the same connections
 
   phases:
-    - name: Plain
-      duration: 120
-      arrivalRate: 30
+    # Crear "arrivalRate" usuarios por segundo, durante un intervalo de "duration" segundos
+    - name: Constant
+      duration: 10
+      arrivalRate: 50
+    # Ramp up arrival rate from 10 to 50 over 120 segundos
+    #- name: RampUp
+    #  duration: 120
+    #  arrivalRate: 50
+    #  rampTo: 50
+    # Create 20 virtual users in 60 seconds (approximately one every 3 seconds):
+    #- name: FixedCount
+    #  duration: 60
+    #  arrivalCount: 20
+    #- name: Pause
+    #  pause: 10
 
 scenarios:
   - name: Root (/)
