@@ -53,7 +53,7 @@ def heavy():
 	# For now a simple for spin loop will do
 	start = time.time()
 	for i in range(MAX_ITERATIONS):
-		l = 1 # Do nothing
+		l = 6.98/3.02
 	end = time.time()
 	elapsed = end - start
 

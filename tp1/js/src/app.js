@@ -50,7 +50,9 @@ app.get('/heavy', (req, res) => {
 	
 	// For now a simple for spin loop will do
 	const t0 = Date.now();
-	for (let i = 0; i < MAX_ITERATIONS; i++) {};
+	for (let i = 0; i < MAX_ITERATIONS; i++) {
+		let div = 6.98/3.02;
+	};
 	const t1 = Date.now();
 
 	response = "Termino loop luego de " + (t1 - t0) + " milisegundos";

@@ -42,7 +42,7 @@ config:
     # Crear "arrivalRate" usuarios por segundo, durante un intervalo de "duration" segundos
     - name: Constant
       duration: 60
-      arrivalRate: 500
+      arrivalRate: 100
     # Ramp up arrival rate from 10 to 50 over 120 segundos
     #- name: RampUp
     #  duration: 120
@@ -56,7 +56,7 @@ config:
     #  pause: 10
 
 scenarios:
-  - name: Root (/)
+  - name: heavy
     flow:
       - get:
-          url: '/'
+          url: '/heavy'
