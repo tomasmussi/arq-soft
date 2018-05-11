@@ -17,6 +17,7 @@ app.get('/', (req, res) => {
 
 app.get('/test', (req, res) => {
 	console.log("Request arrived")
+	for (let i = 0; i < (MAX_ITERATIONS*100); i++) {};
 	res.send("Hola mundo!");
 });
 

@@ -14,8 +14,9 @@ def home():
 def test():
 	print("Request arrived")
 	l = []
-	for i in range(100000):
+	for i in range(MAX_ITERATIONS * 100):
 		l.append(i)
+		l.pop()
 	return "Hola mundo!"
 
 # @app.route('/test/<id>')
