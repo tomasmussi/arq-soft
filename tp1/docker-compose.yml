@@ -51,6 +51,17 @@ services:
             - grafana
         command: npm run start
 
+    nw-gunicorn:
+        build:
+            context: .
+            dockerfile: gunicorn.dockerfile
+        volumes:
+            - ./py:/app/py
+        links:
+            - grafana
+        command: gunicorn -w 5 app:app -b :8000
+
+
     nginx:
         image: nginx:1.13.10
         ports:

@@ -36,6 +36,14 @@ config:
           port: 8125
           prefix: "artillery-cluster-node"
 
+    multiple:
+      target: 'http://localhost:5555/multiple/'
+      plugins:
+        statsd:
+          host: localhost
+          port: 8125
+          prefix: "artillery-multiple"
+
   pool: 50 # All HTTP requests from all virtual users will be sent over the same connections
 
   phases:
