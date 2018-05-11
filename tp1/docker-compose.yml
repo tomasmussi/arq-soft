@@ -41,6 +41,16 @@ services:
             - grafana
         command: npm run start
 
+    cluser-node:
+        build:
+            context: .
+            dockerfile: node-express.dockerfile
+        volumes:
+            - ./js/src/multiple_app.js:/app/src/app.js
+        links:
+            - grafana
+        command: npm run start
+
     nginx:
         image: nginx:1.13.10
         ports:
