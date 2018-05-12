@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+app.use(express.static('.'));
 
 // Constants
 const PORT = process.env.PORT || 3000;
