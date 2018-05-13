@@ -1,11 +1,8 @@
 const cluster = require('cluster');
 
 if (cluster.isMaster) {
-	// Count the machine's CPUs
-    const cpuCount = require('os').cpus().length;
-
-    // Create a worker for each CPU
-    for (let i = 0; i < cpuCount; i++) {
+    // Create 3 workers
+    for (let i = 0; i < 3; i++) {
         cluster.fork();
     }
 } else {
@@ -19,12 +16,12 @@ if (cluster.isMaster) {
 
 	// Endpoints
 	app.get('/', (req, res) => {
-		console.log(`Request arrived from ${cluster.worker.id}`);
+		console.log(`Request arrived to worker ${cluster.worker.id}`);
 		res.send("Home node");
 	})
 
 	app.get('/test', (req, res) => {
-		console.log(`Request arrived from ${cluster.worker.id}`);
+		console.log(`Request arrived to worker ${cluster.worker.id}`);
 		for (let i = 0; i < (MAX_ITERATIONS*100); i++) {};
 		res.send("Hola mundo!");
 	});
@@ -34,8 +31,8 @@ if (cluster.isMaster) {
 	 * but it does not demand a lot of resources, such as CPU time, memory, disk operations, etc
 	 */
 	app.get('/light', (req, res) => {
-		console.log(`Request arrived from ${cluster.worker.id}`);
-		
+		console.log(`Request arrived to worker ${cluster.worker.id}`);
+
 		// For now a simple sleep will do
 		const begin = Date.now();
 		setTimeout((begin) => {
@@ -55,7 +52,7 @@ if (cluster.isMaster) {
 	 * - Disk: reading/writing to disk something, seek operations
 	 */
 	app.get('/heavy', (req, res) => {
-		console.log(`Request arrived from ${cluster.worker.id}`);
+		console.log(`Request arrived to worker ${cluster.worker.id}`);
 
 		// For now a simple for spin loop will do
 		const t0 = Date.now();
