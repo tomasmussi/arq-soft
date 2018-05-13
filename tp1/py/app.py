@@ -1,13 +1,22 @@
 from flask import Flask
 import time
+import logging
 
 SLEEP_TIME = 0.1 # in seconds
 MAX_ITERATIONS = 5242880
 
 app = Flask(__name__)
 
+# This allow us to log with app.logger to gunicorn_logger. That way, by sending those
+# logs to stdout (--log-file=-) in the docker-compose, we can check directly for them there
+if __name__ != "__main__":
+    gunicorn_logger = logging.getLogger("gunicorn.error")
+    app.logger.handlers = gunicorn_logger.handlers
+    app.logger.setLevel(gunicorn_logger.level)
+
 @app.route('/')
 def home():
+	app.logger.info("Request arrived")
 	return "Home python"
 
 @app.route('/test')

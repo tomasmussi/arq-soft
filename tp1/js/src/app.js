@@ -12,6 +12,7 @@ const SLEEP_TIME = 1000; // in miliseconds
 
 // Endpoints
 app.get('/', (req, res) => {
+	console.log("Request arrived")
 	res.send("Home node");
 })
 

@@ -9,7 +9,7 @@ services:
             - ./py:/app/py
         links:
             - grafana
-        command: gunicorn -w 1 app:app -b :8000
+        command: gunicorn -w 1 app:app -b :8000 --access-logfile access.log --error-logfile error.log --log-file=-
 
     n-gunicorn:
         build:
@@ -19,7 +19,7 @@ services:
             - ./py:/app/py
         links:
             - grafana
-        command: gunicorn -w 1 app:app -b :8000 --access-logfile access.log --error-logfile error.log
+        command: gunicorn -w 1 app:app -b :8000 --access-logfile access-n.log --error-logfile error-n.log --log-file=-
 
     node:
         build:
