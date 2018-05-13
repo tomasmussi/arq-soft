@@ -1,4 +1,4 @@
-## Node
+## Node Cluster
 
 Para correr el servidor `node` con la aplicación, es necesario instalar los paquetes necesarios con el comando:
 
@@ -11,3 +11,5 @@ Una vez instalado, se puede indicar el puerto en donde se quiere levantar dicho 
 ```bash
 PORT=3000 npm start
 ```
+
+Esto levantará un servidor con una determinada cantidad de workers que podrán responder los requests.

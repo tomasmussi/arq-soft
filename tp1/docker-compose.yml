@@ -41,7 +41,7 @@ services:
             - grafana
         command: npm run start
 
-    cluster-node:
+    node-cluster:
         build:
             context: .
             dockerfile: node-express.dockerfile
@@ -63,7 +63,7 @@ services:
             - w-gunicorn
             - n-gunicorn
             - node
-            - cluster-node
+            - node-cluster
 
     graphite:
         image: graphiteapp/graphite-statsd:1.1.3
