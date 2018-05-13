@@ -15,7 +15,7 @@ config:
           port: 8125
           prefix: "artillery-n-gunicorn"
     w-gunicorn:
-      target: 'http://localhost:5555/gunicorn-worker/'
+      target: 'http://localhost:5555/gunicorn_worker/'
       plugins:
         statsd:
           host: localhost
@@ -29,7 +29,7 @@ config:
           port: 8125
           prefix: "artillery-node"
     node-cluster:
-      target: 'http://localhost:5555/node-cluster/'
+      target: 'http://localhost:5555/node_cluster/'
       plugins:
         statsd:
           host: localhost
