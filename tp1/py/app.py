@@ -68,4 +68,4 @@ def heavy():
 
 @app.route('/get_image')
 def get_image():
-    return send_file('ok.gif', mimetype='image/gif')
+    return send_file('ok.jpeg', mimetype='image/jpeg')
