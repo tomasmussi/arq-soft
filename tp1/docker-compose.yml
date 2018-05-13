@@ -19,7 +19,7 @@ services:
             - ./py:/app/py
         links:
             - grafana
-        command: gunicorn -w 5 app:app -b :8000
+        command: gunicorn -w 3 app:app -b :8000
 
     n-gunicorn:
         build:
@@ -41,26 +41,15 @@ services:
             - grafana
         command: npm run start
 
-    cluser-node:
+    cluster-node:
         build:
             context: .
             dockerfile: node-express.dockerfile
         volumes:
-            - ./js/src/multiple_app.js:/app/src/app.js
+            - ./js-cluster/src:/app/src
         links:
             - grafana
         command: npm run start
-
-    nw-gunicorn:
-        build:
-            context: .
-            dockerfile: gunicorn.dockerfile
-        volumes:
-            - ./py:/app/py
-        links:
-            - grafana
-        command: gunicorn -w 5 app:app -b :8000
-
 
     nginx:
         image: nginx:1.13.10
@@ -71,7 +60,10 @@ services:
             - ./store/static/files:/static:ro
         links:
             - gunicorn
+            - w-gunicorn
+            - n-gunicorn
             - node
+            - cluster-node
 
     graphite:
         image: graphiteapp/graphite-statsd:1.1.3

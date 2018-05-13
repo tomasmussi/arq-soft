@@ -7,13 +7,6 @@ config:
           host: localhost
           port: 8125
           prefix: "artillery-gunicorn"
-    node:
-      target: 'http://localhost:5555/node/'
-      plugins:
-        statsd:
-          host: localhost
-          port: 8125
-          prefix: "artillery-node"
     n-gunicorn:
       target: 'http://localhost:5555/gunicorn_replicated/'
       plugins:
@@ -28,6 +21,13 @@ config:
           host: localhost
           port: 8125
           prefix: "artillery-w-gunicorn"
+    node:
+      target: 'http://localhost:5555/node/'
+      plugins:
+        statsd:
+          host: localhost
+          port: 8125
+          prefix: "artillery-node"
     cluster-node:
       target: 'http://localhost:5555/cluster-node/'
       plugins:
@@ -35,14 +35,6 @@ config:
           host: localhost
           port: 8125
           prefix: "artillery-cluster-node"
-
-    multiple:
-      target: 'http://localhost:5555/multiple/'
-      plugins:
-        statsd:
-          host: localhost
-          port: 8125
-          prefix: "artillery-multiple"
 
   pool: 50 # All HTTP requests from all virtual users will be sent over the same connections
 
