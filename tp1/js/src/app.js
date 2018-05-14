@@ -1,8 +1,4 @@
-
 const express = require('express');
-// For use multiple node instances:
-// const cluster = require('cluster');
-
 const app = express();
 
 // Constants
@@ -22,15 +18,13 @@ app.get('/test', (req, res) => {
 	res.send("Hola mundo!");
 });
 
-// app.get('/test/:id', (req, res) => {
-// 	res.send("Hola mundo! " + req.params.id);
-// });
-
 /*
  * Defines a slow and light endpoint. This means that the endpoint is slow
  * but it does not demand a lot of resources, such as CPU time, memory, disk operations, etc
  */
 app.get('/light', (req, res) => {
+	console.log("Request arrived")
+
 	// For now a simple sleep will do
 	const begin = Date.now();
 	setTimeout((begin) => {
@@ -50,6 +44,8 @@ app.get('/light', (req, res) => {
  * - Disk: reading/writing to disk something, seek operations
  */
 app.get('/heavy', (req, res) => {
+	console.log("Request arrived")
+	
 	// For now a simple for spin loop will do
 	const t0 = Date.now();
 	for (let i = 0; i < MAX_ITERATIONS; i++) {};

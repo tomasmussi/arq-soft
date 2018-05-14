@@ -11,6 +11,16 @@ services:
             - grafana
         command: gunicorn -w 1 app:app -b :8000 --access-logfile access.log --error-logfile error.log --log-file=-
 
+    w-gunicorn:
+        build:
+            context: .
+            dockerfile: gunicorn.dockerfile
+        volumes:
+            - ./py:/app/py
+        links:
+            - grafana
+        command: gunicorn -w 3 app:app -b :8000
+
     n-gunicorn:
         build:
             context: .
@@ -31,6 +41,16 @@ services:
             - grafana
         command: npm run start
 
+    node-cluster:
+        build:
+            context: .
+            dockerfile: node-express.dockerfile
+        volumes:
+            - ./js-cluster/src:/app/src
+        links:
+            - grafana
+        command: npm run start
+
     nginx:
         image: nginx:1.13.10
         ports:
@@ -40,7 +60,10 @@ services:
             - ./store/static/files:/static:ro
         links:
             - gunicorn
+            - w-gunicorn
+            - n-gunicorn
             - node
+            - node-cluster
 
     graphite:
         image: graphiteapp/graphite-statsd:1.1.3
