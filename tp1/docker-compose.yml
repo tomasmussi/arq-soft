@@ -64,7 +64,6 @@ services:
             - n-gunicorn
             - node
             - node-cluster
-            - n-gunicorn
 
 
     graphite:
