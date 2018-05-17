@@ -43,9 +43,20 @@ config:
     - name: Constant
       duration: 60
       arrivalRate: 100
+    # Ramp up arrival rate from 10 to 50 over 120 segundos
+    #- name: RampUp
+    #  duration: 120
+    #  arrivalRate: 50
+    #  rampTo: 50
+    # Create 20 virtual users in 60 seconds (approximately one every 3 seconds):
+    #- name: FixedCount
+    #  duration: 60
+    #  arrivalCount: 20
+    #- name: Pause
+    #  pause: 10
 
 scenarios:
-  - name: Heavy (/heavy)
+  - name: Root (/)
     flow:
       - get:
-          url: '/heavy'
+          url: '/'
