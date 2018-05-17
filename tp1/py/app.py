@@ -29,10 +29,6 @@ def test():
 		l.pop()
 	return "Hola mundo!"
 
-# @app.route('/test/<id>')
-# def test(id):
-# 	return "Hola mundo! " + str(id)
-
 """
 Defines a slow and light endpoint. This means that the endpoint is slow
 but it does not demand a lot of resources, such as CPU time, Memory, Disk operations, etc
