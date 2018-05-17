@@ -18,6 +18,12 @@ O bien si se quieren correr `n` `workers` al mismo tiempo:
 gunicorn app:app -w n
 ```
 
+Así como también si se quiere levantar en otro puerto distinto al 8000, se le puede pasar el binding de puerto:
+
+```bash
+gunicorn app:app -b port
+```
+
 Esto está resumido en el script `init.sh`:
 
 ```bash
@@ -25,7 +31,7 @@ Esto está resumido en el script `init.sh`:
 ./init.sh port n
 ```
 
-Es necesario siempre especificar puerto de binding en el cual estará escuchando el server. Si además se pasa `n`, esos serán la cantidad de workers que despacha el server.
+En caso de usar dicho script, en caso de querer especificar la cantidad de workers, es necesario también especificar el puerto de binding en el cual estará escuchando el server.
 
 ### Explicación
 

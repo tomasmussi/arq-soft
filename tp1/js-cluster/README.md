@@ -12,4 +12,4 @@ Una vez instalado, se puede indicar el puerto en donde se quiere levantar dicho 
 PORT=3000 npm start
 ```
 
-Esto levantará un servidor con una determinada cantidad de workers que podrán responder los requests.
+Esto levantará un servidor con una determinada cantidad de workers (3) que podrán responder los requests.
