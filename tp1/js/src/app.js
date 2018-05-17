@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+// In order to serve static files
 app.use(express.static('.'));
 
 // Constants

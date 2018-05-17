@@ -30,14 +30,16 @@ config:
       duration: 60
       arrivalRate: 1000
 
+# For gunicorn
 #scenarios:
-#  - name: Root (/)
+#  - name: Static (/)
 #    flow:
 #      - get:
 #          url: '/get_image'
 
+# For node
 scenarios:
-  - name: Root (/)
+  - name: Static
     flow:
       - get:
           url: '/ok.jpeg'

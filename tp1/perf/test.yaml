@@ -48,4 +48,4 @@ scenarios:
   - name: Root (/)
     flow:
       - get:
-          url: ''
+          url: '/'
