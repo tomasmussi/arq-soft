@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import send_file
 import time
 import logging
 
@@ -63,3 +64,8 @@ def heavy():
 	response = "Finalizo en " + str(elapsed) + " segundos"
 	print(response)
 	return response
+
+
+@app.route('/get_image')
+def get_image():
+    return send_file('ok.jpeg', mimetype='image/jpeg')

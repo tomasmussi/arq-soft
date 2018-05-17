@@ -7,6 +7,13 @@ config:
           host: localhost
           port: 8125
           prefix: "artillery-gunicorn"
+    node:
+      target: 'http://localhost:5555/node/src'
+      plugins:
+        statsd:
+          host: localhost
+          port: 8125
+          prefix: "artillery-node"
     n-gunicorn:
       target: 'http://localhost:5555/gunicorn_replicated'
       plugins:
@@ -14,27 +21,6 @@ config:
           host: localhost
           port: 8125
           prefix: "artillery-n-gunicorn"
-    w-gunicorn:
-      target: 'http://localhost:5555/gunicorn_worker'
-      plugins:
-        statsd:
-          host: localhost
-          port: 8125
-          prefix: "artillery-w-gunicorn"
-    node:
-      target: 'http://localhost:5555/node'
-      plugins:
-        statsd:
-          host: localhost
-          port: 8125
-          prefix: "artillery-node"
-    node-cluster:
-      target: 'http://localhost:5555/node_cluster'
-      plugins:
-        statsd:
-          host: localhost
-          port: 8125
-          prefix: "artillery-node-cluster"
 
   pool: 50 # All HTTP requests from all virtual users will be sent over the same connections
 
@@ -44,8 +30,14 @@ config:
       duration: 60
       arrivalRate: 1000
 
+#scenarios:
+#  - name: Root (/)
+#    flow:
+#      - get:
+#          url: '/get_image'
+
 scenarios:
   - name: Root (/)
     flow:
       - get:
-          url: ''
+          url: '/ok.jpeg'
