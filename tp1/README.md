@@ -21,7 +21,7 @@ Al clickear en "Add data source", completarlo de la siguiente manera:
 
 ![Grafana config](images/grafana-config.png "Grafana config")
 
-Una vez hecho esto, se puede, desde el botón de `+`, crear un dashboard o bien importarlo. Por ejemplo, se puede importar el archivo `.json` como, por ejemplo, `dashboard-light.json`, que ya provee una serie de gráficos sobre las distintas apps que hay dentro del Docker Compose.
+Una vez hecho esto, se puede, desde el botón de `+`, crear un dashboard o bien importarlo. Por ejemplo, se puede importar el archivo `.json` como, por ejemplo, `dashboard.json`, que ya provee una serie de gráficos sobre las distintas apps que hay dentro del Docker Compose.
 
 **Nota:** Es importante que el nombre del data source coincida con el que está especificado en el archivo `.json`
 
