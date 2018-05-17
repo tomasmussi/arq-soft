@@ -12,7 +12,7 @@ if (cluster.isMaster) {
 	// Constants
 	const PORT = process.env.PORT || 3000;
 	const MAX_ITERATIONS = 5242880;
-	const SLEEP_TIME = 1000; // in miliseconds
+	const SLEEP_TIME = 100; // in miliseconds
 
 	// Endpoints
 	app.get('/', (req, res) => {

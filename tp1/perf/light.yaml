@@ -42,10 +42,10 @@ config:
     # Crear "arrivalRate" usuarios por segundo, durante un intervalo de "duration" segundos
     - name: Constant
       duration: 60
-      arrivalRate: 1000
+      arrivalRate: 100
 
 scenarios:
-  - name: Root (/)
+  - name: Light (/light)
     flow:
       - get:
-          url: '/'
+          url: '/light'
